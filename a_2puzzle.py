@@ -44,7 +44,6 @@ class State:
         return (self.cost + self.heuristic()) < (other.cost + other.heuristic())
 
     def heuristic(self):
-        # 맨해튼 거리 휴리스틱
         distance = 0
         for i, val in enumerate(self.board):
             if val != 0:
