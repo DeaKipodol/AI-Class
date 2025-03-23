@@ -38,7 +38,7 @@ def heuristic(state):
     return sum([1 if state[i] == goal_state[i] else 0 for i in range(len(state))])
 
 # 퍼즐에서 가능한 이동 (빈 공간(0)과 인접한 값을 교환)
-def get_children(state):
+def get_state(state):
     children = []
     idx = state.index(0)
     
@@ -75,9 +75,10 @@ def best_first(root):
             return True
         else:
             closed_list.append(x)
-            for child in get_children(x):
+            for child in get_state(x):
                 if child not in open_list and child not in closed_list:
                     open_list.append(child)
+                    #open에 넣을떄 어떻게 넣어도 상관없다. 어차피 sort를 통해 평가값이 높은 순으로 정렬되기 때문이다.
 
     print(f"목표 상태에 도달하지 못했습니다. 탐색한 상태 수: {state_count}")
     return False
